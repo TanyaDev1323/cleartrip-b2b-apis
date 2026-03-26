@@ -17,6 +17,28 @@ post:
 
   summary: Get Hotel Profile in Batch
   operationId: getHotelProfileInBatch
+  x-codeSamples:
+    - lang: 'Shell'
+      label: 'cURL'
+      source: |
+        curl --location 'https://b2b.cleartrip.com/hotels/api/v4/content/hotel-profiles' \
+        --header 'X-CT-API-KEY: YOUR_API_KEY' \
+        --header 'x-meta-data: {"locationVersion":"V2"}' \
+        --header 'x-request-id: 123' \
+        --header 'Content-Type: application/json' \
+        --data '{
+          "hotelIds": [
+            "1357324", "2048052"
+          ],
+          "metadata": {
+            "locationVersionToHotelIdsMap": {
+              "V1": [],
+              "V2": [
+                "707595"
+              ]
+            }
+          }
+        }'
   parameters:
     - $ref: '../../components/schemas/parameters/x-api-key-header.yaml'
     - $ref: '../../components/schemas/parameters/x-tracking-id-header.yaml'
