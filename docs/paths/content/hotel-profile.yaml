@@ -10,6 +10,12 @@ get:
       - Supports accessing complete hotel profiles for display or further processing.
 
       Designed to provide rich and detailed hotel content efficiently.
+    
+    **Constraint:**  
+    - Maximum stay duration: 28 nights
+    - Maximum age for children: 11 years (child ages must be 0–11 inclusive)
+    - Limit: 6 rooms per request
+    - Single room capacity: 1 to 8 adults
 
   summary: Get Hotel Profile
   operationId: getHotelProfile

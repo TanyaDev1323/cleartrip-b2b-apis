@@ -10,6 +10,9 @@ get:
       - Ensures scalable and optimized data access.
 
       This allows users to seamlessly obtain hotel details for dynamic location-based searches.
+    
+     **Constraint:**  
+      - locationType (String): Currently accepts ["CITY"]. We expect to expand the supported types in the future.
 
   summary: Get Hotel List
   operationId: getHotelList
