@@ -4,21 +4,30 @@ get:
   description: |
       This API retrieves detailed profile information for a specific hotel based on the provided hotel ID.
 
-      **Features:**  
-      - Fetches comprehensive hotel details.  
-      - Includes hotel policies, amenities, and other relevant information.  
+      **Features:**
+      - Fetches comprehensive hotel details.
+      - Includes hotel policies, amenities, and other relevant information.
       - Supports accessing complete hotel profiles for display or further processing.
 
       Designed to provide rich and detailed hotel content efficiently.
-    
-    **Constraint:**  
-    - Maximum stay duration: 28 nights
-    - Maximum age for children: 11 years (child ages must be 0–11 inclusive)
-    - Limit: 6 rooms per request
-    - Single room capacity: 1 to 8 adults
+
+      **Constraint:**
+      - Maximum stay duration: 28 nights
+      - Maximum age for children: 11 years (child ages must be 0–11 inclusive)
+      - Limit: 6 rooms per request
+      - Single room capacity: 1 to 8 adults
 
   summary: Get Hotel Profile
   operationId: getHotelProfile
+  x-codeSamples:
+    - lang: 'Shell'
+      label: 'cURL'
+      source: |
+        curl --location 'https://api.cleartrip.com/hotels/api/v4/content/hotel-profile/122897' \
+        --header 'X-CT-API-KEY: *yourAPIkey*' \
+        --header 'x-meta-data: {"locationVersion":"V2"}' \
+        --header 'x-request-id: *YourRequestid*' \
+        --header 'host: cms-indexer.cltp.com:9001'
   parameters:
     - $ref: '../../components/schemas/parameters/x-api-key-header.yaml'
     - $ref: '../../components/schemas/parameters/x-tracking-id-header.yaml'

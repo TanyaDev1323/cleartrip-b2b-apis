@@ -8,11 +8,16 @@ get:
       - Retrieves location details along with hierarchical relationships.  
       - Supports efficient pagination for large datasets.  
       - Provides associated metadata for each location.
-     **Constraint:**  
-      - locationType | String | Currently accepts CITY or STATE. Additional types will be supported in future releases.  
 
   summary: Get Location List
   operationId: getLocationList
+  x-codeSamples:
+    - lang: 'Shell'
+      label: 'cURL'
+      source: |
+        curl --location 'https://api.cleartrip.com/hotels/api/v4/content/locations?locationType=CITY&pageSize=1000&nextPageToken=0' \
+        --header 'X-CT-API-KEY: *yourAPIkey*' \
+        --header 'x-request-id: *YourRequestid*'
   parameters:
     - $ref: '../../components/schemas/parameters/x-api-key-header.yaml'
     - $ref: '../../components/schemas/parameters/x-tracking-id-header.yaml'
