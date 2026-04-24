@@ -36,6 +36,9 @@ properties:
     type: array
     items:
       $ref: './media.yaml'
+  bedType:
+    type: string
+    description: Type of bed in the room, e.g., King bed, Queen bed
   bedGroups:
     type: array
     items:

@@ -25,3 +25,64 @@ required:
   - locationType
   - locationsHierarchy
   - locationIdToMetadataMap
+example:
+  hasNextPage: true
+  nextPageToken: "1"
+  locationType: CITY
+  locationsHierarchy:
+    - id: 703210
+      parent:
+        id: 1139
+        parent:
+          id: 694
+    - id: 448414
+      parent:
+        id: 1120
+        parent:
+          id: 694
+  locationIdToMetadataMap:
+    "703210":
+      type: CITY
+      name: Agatti
+      coordinates:
+        centerLatitude: 10.849461555480957
+        centerLongitude: 72.17123413085938
+      searchEnabled: true
+      locationMetaData:
+        locationVersion: V2
+    "448414":
+      type: CITY
+      name: Bhalukpong
+      coordinates:
+        centerLatitude: 27.013750076293945
+        centerLongitude: 92.63448333740234
+      searchEnabled: true
+      locationMetaData:
+        locationVersion: V2
+    "1139":
+      type: STATE
+      name: Lakshadweep
+      coordinates:
+        centerLatitude: 9.985089302062988
+        centerLongitude: 72.9324722290039
+      searchEnabled: true
+      locationMetaData:
+        locationVersion: V2
+    "1120":
+      type: STATE
+      name: Arunachal Pradesh
+      coordinates:
+        centerLatitude: 28.217998504638672
+        centerLongitude: 94.72775268554688
+      searchEnabled: false
+      locationMetaData:
+        locationVersion: V2
+    "694":
+      type: COUNTRY
+      name: India
+      coordinates:
+        centerLatitude: 20.59368324279785
+        centerLongitude: 78.96288299560547
+      searchEnabled: false
+      locationMetaData:
+        locationVersion: V2

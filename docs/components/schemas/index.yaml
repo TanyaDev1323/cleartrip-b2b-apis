@@ -1,5 +1,91 @@
-# Include schema indexes
-$ref: './common/index.yaml'
-$ref: './search/index.yaml'
-$ref: './booking/index.yaml'
-$ref: './content/index.yaml' 
+# Common schemas
+AnveshakErrorResponse:
+  $ref: './common/anveshak-error-response.yaml'
+BaseCustomerInfo:
+  $ref: './common/base-customer-info.yaml'
+CorpInfo:
+  $ref: './common/corp-info.yaml'
+RoomPax:
+  $ref: './common/room-pax.yaml'
+
+# Search schemas
+SearchByHotelIdRequest:
+  $ref: './search/search-by-hotelId/request/search-by-hotelId-request.yaml'
+SearchByLocationRequest:
+  $ref: './search/search-by-location/request/search-by-location-request.yaml'
+SearchResponse:
+  $ref: './search/shared/search-response.yaml'
+
+# Booking schemas
+BookRequestV4:
+  $ref: './booking/book/book-request-v4.yaml'
+BookResponseV4:
+  $ref: './booking/book/book-response-v4.yaml'
+PaymentDetails:
+  $ref: './booking/book/payment-details.yaml'
+
+# Content request schemas
+HotelBatchProfileRequest:
+  $ref: './content/request/hotel-batch-profile-request.yaml'
+MetaData:
+  $ref: './content/request/meta-data.yaml'
+LocationVersionToHotelIdsMap:
+  $ref: './content/request/LocationVersionToHotelIdsMap.yaml'
+
+# Content response schemas
+HotelBatchProfileResponse:
+  $ref: './content/response/hotel-batch-profile-response.yaml'
+HotelListResponse:
+  $ref: './content/response/hotel-list-response.yaml'
+HotelProfileResponse:
+  $ref: './content/response/hotel-profile-response.yaml'
+LocationListResponse:
+  $ref: './content/response/location-list-response.yaml'
+HotelObject:
+  $ref: './content/response/hotel-object.yaml'
+HotelMetaData:
+  $ref: './content/response/hotel-meta-data.yaml'
+HotelContent:
+  $ref: './content/response/hotelContent.yaml'
+RoomsContent:
+  $ref: './content/response/roomsContent.yaml'
+Amenity:
+  $ref: './content/response/amenity.yaml'
+Chain:
+  $ref: './content/response/chain.yaml'
+Contact:
+  $ref: './content/response/contact.yaml'
+Coordinates:
+  $ref: './content/response/coordinates.yaml'
+LocationIdToMetadataMap:
+  $ref: './content/response/location-id-to-metadata-map.yaml'
+Location:
+  $ref: './content/response/location.yaml'
+LocationMetadata:
+  $ref: './content/response/location-metadata.yaml'
+LocationsHierarchy:
+  $ref: './content/response/locations-hierarchy.yaml'
+Media:
+  $ref: './content/response/media.yaml'
+OtherInfo:
+  $ref: './content/response/otherInfo.yaml'
+Policy:
+  $ref: './content/response/policy.yaml'
+Property:
+  $ref: './content/response/property.yaml'
+Ratings:
+  $ref: './content/response/ratings.yaml'
+Room:
+  $ref: './content/response/room.yaml'
+
+# Prov-book schemas
+ProvisionalBookRequest:
+  $ref: './prov-book/request/provisional-book-request.yaml'
+
+# Post-booking schemas
+GetTripResponse:
+  $ref: './post-booking/response/get-trip-response.yaml'
+CancelResponse:
+  $ref: './post-booking/response/cancel-response.yaml'
+RefundInfoResponse:
+  $ref: './post-booking/response/refund-info-response.yaml'

@@ -11,8 +11,18 @@ get:
 
       Designed to help partners maintain up-to-date hotel content with minimal data transfer.
 
+      **Note:**
+      If `hasNextPage` is `true` in the response, a `nextPageToken` will be included. Pass this token as the `nextPageToken` query parameter in your next request to retrieve subsequent pages.
+
   summary: Get Incremental Update Hotel List
   operationId: getIncrementalUpdateHotelList
+  x-codeSamples:
+    - lang: 'Shell'
+      label: 'cURL'
+      source: |
+        curl --location 'https://api.cleartrip.com/hotels/api/v4/content/incremental-updates?lastUpdatedAt=1704067200&pageSize=2000' \
+        --header 'x-ct-api-key: API_KEY' \
+        --header 'x-request-id: REQUEST_ID'
   parameters:
     - $ref: '../../components/schemas/parameters/x-api-key-header.yaml'
     - $ref: '../../components/schemas/parameters/x-tracking-id-header.yaml'
@@ -49,6 +59,14 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/content/response/hotel-list-response.yaml'
+          example:
+            hasNextPage: true
+            nextPageToken: "WzE3NDQ3OTIwMTgwNjhd"
+            hotels:
+              - hotelId: 2891808
+              - hotelId: 2446572
+              - hotelId: 2446608
+              - hotelId: 2367938
     '400':
       $ref: '../../components/schemas/common/bad-request-response.yaml'
     '403':

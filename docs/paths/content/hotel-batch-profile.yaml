@@ -9,10 +9,31 @@ post:
       - Includes hotel policies, amenities, and other relevant information.  
       - Supports batch retrieval of hotel profiles for efficient data access.
 
-      Ideal for scenarios where multiple hotel profiles need to be fetched in a single request.  
+      Ideal for scenarios where multiple hotel profiles need to be fetched in a single request.
+
+      **Constraint:**
+      - Max allowed batch size for hotelIds is 50.
+      - While the Hotel Batch Profile doesn’t currently support pagination via hasNextPage, the response times remain consistently fast, typically loading within a few seconds
+
+      **Note:**
+      Use the locationVersion received in the response of Location-List for {"locationVersion":"*VERSION*"} in the Request.
 
   summary: Get Hotel Profile in Batch
   operationId: getHotelProfileInBatch
+  x-codeSamples:
+    - lang: ‘Shell’
+      label: 'cURL'
+      source: |
+        curl --location ‘https://api.cleartrip.com/hotels/api/v4/content/hotel-profiles’ \
+        --header ‘X-CT-API-KEY: *API_KEY*’ \
+        --header ‘x-meta-data: {"locationVersion":"*VERSION*"}’ \
+        --header ‘x-request-id: *REQUEST_ID*’ \
+        --header ‘Content-Type: application/json’ \
+        --data ‘{
+          "hotelIds": [
+            "122897", "1324888"
+          ]
+        }’
   parameters:
     - $ref: '../../components/schemas/parameters/x-api-key-header.yaml'
     - $ref: '../../components/schemas/parameters/x-tracking-id-header.yaml'
@@ -29,6 +50,315 @@ post:
         application/json:
           schema:
             $ref: '../../components/schemas/content/response/hotel-batch-profile-response.yaml'
+          example:
+            hotels:
+              - hotelId: "122897"
+                hotelContent:
+                  name: "Featherlite Evoma Hotel"
+                  description: "Evoma - Business Hotel, in K R Puram, Bangalore, is a 4-star business hotel..."
+                  property:
+                    name: "Hotel"
+                    code: "HOT"
+                    type: "Hotel"
+                  hotelLocation:
+                    coordinates:
+                      latitude: 13.022585
+                      longitude: 77.712135
+                    pincode: "560049"
+                    country:
+                      id: 694
+                      name: "India"
+                      code: "IN"
+                    city:
+                      id: 32550
+                      name: "Bangalore"
+                    state:
+                      id: 1137
+                      name: "Karnataka"
+                    area:
+                      name: "#14 Bhattrahalli, Old Madras Road, 560049 Bangalore, India"
+                    locality:
+                      id: 586247
+                      name: "Battarahalli"
+                  media:
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/93613e67_z.jpg"
+                      type: "PHOTO"
+                      featured: true
+                      category: "Property Pictures"
+                      subCategory: "Hotel Exterior"
+                      caption: "Property entrance"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/93613e67_z_tn.jpg"
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_4a7f3de0-8edc-4577-bff8-845c3107fb10.jpeg"
+                      type: "PHOTO"
+                      featured: true
+                      category: "Amenities Pictures"
+                      subCategory: "Pool"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_4a7f3de0-8edc-4577-bff8-845c3107fb10_tn.jpeg"
+                    - "..."
+                  amenities:
+                    - name: "24-hour security"
+                      category: "General Amenities"
+                      standardAmenityName: "24-hour-security"
+                    - name: "Air conditioning"
+                      category: "General Amenities"
+                      standardAmenityName: "air-conditioning"
+                    - name: "Swimming pool"
+                      category: "General Amenities"
+                      standardAmenityName: "swimming-pool"
+                    - name: "Restaurant"
+                      category: "Food & Beverages"
+                      standardAmenityName: "restaurant"
+                    - name: "Bar"
+                      category: "Food & Beverages"
+                      standardAmenityName: "bar"
+                    - name: "Conference room"
+                      category: "Business"
+                      standardAmenityName: "conference-room"
+                    - "..."
+                  policyInfo:
+                    checkinTime: "1400"
+                    checkoutTime: "1200"
+                    guidelinesAndPolicies:
+                      - title: "Guest Profile"
+                        description:
+                          - "Guests below 18 years of age NOT allowed"
+                          - "Unmarried couples are allowed"
+                          - "Bachelors are allowed"
+                      - title: "Food & Beverages"
+                        description:
+                          - "Alcohol consumption allowed within the premises"
+                          - "Food from outside allowed within the premises"
+                      - title: "Check-in Check-out Policy"
+                        description:
+                          - "Aadhar, Passport and Drivers License are acceptable ID Proofs"
+                      - title: "Restrictions"
+                        description:
+                          - "Pets NOT allowed within the premises"
+                          - "Smoking allowed within the premises"
+                      - "..."
+                  slugId: "evoma-hotel-122897"
+                  otherInfo:
+                    numberOfFloors: 0
+                    numberOfRooms: 0
+                  contacts:
+                    - contactTitle: "Hotel Admin"
+                      contactEmail: "rm@hospitalitynmore.com"
+                      contactMobileNo:
+                        - "+91-8041903000"
+                    - contactTitle: "Owner"
+                      contactEmail: "rm@hospitalitynmore.com"
+                      contactMobileNo:
+                        - "+91-8041903000"
+                    - "..."
+                  ratings:
+                    starRating: 4
+                roomsContent:
+                  rooms:
+                    - id: 2593567
+                      name: "Deluxe Double or Twin Room"
+                      description: "Deluxe Double or Twin Room"
+                      views:
+                        - "City view"
+                      amenities:
+                        - name: "Air conditioning"
+                          category: "Top Facilities"
+                        - name: "Desk"
+                          category: "Top Facilities"
+                        - name: "Minibar"
+                          category: "Top Facilities"
+                        - name: "Private bathroom"
+                          category: "Bathroom"
+                        - "..."
+                      area:
+                        value: 150.0
+                        unit: "sq.ft"
+                      media:
+                        - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/447373758_proc.jpg"
+                          type: "PHOTO"
+                          featured: true
+                          category: "Room Pictures"
+                          subCategory: "Deluxe Double or Twin Room"
+                          thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/447373758_tn.jpg"
+                        - "..."
+                      bedType: "Double Bed"
+                      bedGroups: []
+                      maxOccupancy:
+                        totalMaxOccupancy: 3
+                        maxChildOccupancy: 1
+                        maxAdultOccupancy: 3
+                    - id: 2593568
+                      name: "Premium Double Room"
+                      description: "Premium Double Room"
+                      views:
+                        - "City view"
+                      amenities:
+                        - name: "Air conditioning"
+                          category: "Top Facilities"
+                        - name: "Desk"
+                          category: "Top Facilities"
+                        - "..."
+                      area:
+                        value: 160.0
+                        unit: "sq.ft"
+                      media:
+                        - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_dd3d42e4-4fb4-4589-9ad4-9c2666dd6dff_proc.jpeg"
+                          type: "PHOTO"
+                          featured: false
+                          category: "Room Pictures"
+                          subCategory: "Premium Double Room"
+                          thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_dd3d42e4-4fb4-4589-9ad4-9c2666dd6dff_tn.jpeg"
+                        - "..."
+                      bedType: "Double Bed"
+                      bedGroups: []
+                      maxOccupancy:
+                        totalMaxOccupancy: 3
+                        maxChildOccupancy: 1
+                        maxAdultOccupancy: 3
+                    - id: 1305825
+                      name: "Deluxe Room"
+                      amenities:
+                        - name: "TV"
+                          category: "Top Facilities"
+                        - name: "Air conditioning"
+                          category: "Top Facilities"
+                        - name: "Shower"
+                          category: "Top Facilities"
+                        - "..."
+                      area:
+                        value: 498.0
+                        unit: "sq.ft"
+                      media:
+                        - "..."
+                      bedGroups: []
+                      maxOccupancy:
+                        totalMaxOccupancy: 2
+                        maxChildOccupancy: 1
+                        maxAdultOccupancy: 2
+                    - "..."
+              - hotelId: "1324888"
+                hotelContent:
+                  name: "Brahma Inn Executive Rooms"
+                  description: "Brahma Inn provides guests with complimentary Wi-Fi connectivity..."
+                  property:
+                    name: "Hotel"
+                    code: "HOT"
+                    type: "Hotel"
+                  hotelLocation:
+                    coordinates:
+                      latitude: 12.897333
+                      longitude: 77.599778
+                    pincode: "560076"
+                    country:
+                      id: 694
+                      name: "India"
+                      code: "IN"
+                    city:
+                      id: 32550
+                      name: "Bangalore"
+                    state:
+                      id: 1137
+                      name: "Karnataka"
+                    area:
+                      name: "1st Floor, Sadguru Complex, Plot No.65-66, Bannerghatta Rd, Bengaluru, Karnataka 560076"
+                    locality:
+                      id: 442050
+                      name: "Panduranga Nagar"
+                  media:
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1324/1324888/images/image_1324888_c215b8c5-2faf-41e3-902f-a828c95f72e0.jpeg"
+                      type: "PHOTO"
+                      featured: true
+                      category: "Property Pictures"
+                      subCategory: "Hotel Exterior"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1324/1324888/images/image_1324888_c215b8c5-2faf-41e3-902f-a828c95f72e0_tn.jpeg"
+                    - "..."
+                  amenities:
+                    - name: "24-hour front desk"
+                      category: "General Amenities"
+                      standardAmenityName: "24-hour-front-desk"
+                    - name: "Free WiFi"
+                      category: "General Amenities"
+                      standardAmenityName: "free-wifi"
+                    - name: "Parking"
+                      category: "General Amenities"
+                      standardAmenityName: "parking"
+                    - "..."
+                  policyInfo:
+                    checkinTime: "1200"
+                    checkoutTime: "1200"
+                    guidelinesAndPolicies:
+                      - title: "Guest Profile"
+                        description:
+                          - "Unmarried couples allowed"
+                      - title: "Restrictions"
+                        description:
+                          - "Pets are not allowed."
+                      - "..."
+                  slugId: "brahma-inn-1324888"
+                  otherInfo:
+                    numberOfFloors: 1
+                    numberOfRooms: 9
+                  contacts:
+                    - contactTitle: "Hotel Admin"
+                      contactEmail: "brahmainn.jt@gmail.com"
+                      contactMobileNo:
+                        - "+91-9538583910"
+                    - "..."
+                  ratings:
+                    starRating: 0
+                roomsContent:
+                  rooms:
+                    - id: 2593966
+                      name: "Executive Room Non Ac"
+                      description: "Executive Room Non Ac"
+                      views:
+                        - "City view"
+                      amenities:
+                        - name: "Attached washroom"
+                          category: "Top Facilities"
+                        - name: "Water bottle"
+                          category: "Top Facilities"
+                        - name: "TV"
+                          category: "Top Facilities"
+                        - "..."
+                      area:
+                        value: 100.0
+                        unit: "sq.ft"
+                      media:
+                        - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1324/1324888/images/image_1324888_3eab71f0-5f03-4528-9dfa-b6f39b70608f_proc.jpeg"
+                          type: "PHOTO"
+                          featured: true
+                          category: "Room Pictures"
+                          subCategory: "Executive Room Non Ac"
+                          thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1324/1324888/images/image_1324888_3eab71f0-5f03-4528-9dfa-b6f39b70608f_tn.jpeg"
+                        - "..."
+                      bedType: "Double Bed"
+                      bedGroups: []
+                      maxOccupancy:
+                        totalMaxOccupancy: 4
+                        maxChildOccupancy: 2
+                        maxAdultOccupancy: 3
+                    - id: 2593967
+                      name: "Executive AC Room"
+                      description: "Executive AC Room"
+                      views:
+                        - "City view"
+                      amenities:
+                        - name: "Air conditioning"
+                          category: "Top Facilities"
+                        - name: "WiFi access"
+                          category: "Top Facilities"
+                        - "..."
+                      area:
+                        value: 130.0
+                        unit: "sq.ft"
+                      media:
+                        - "..."
+                      bedType: "Double Bed"
+                      bedGroups: []
+                      maxOccupancy:
+                        totalMaxOccupancy: 4
+                        maxChildOccupancy: 2
+                        maxAdultOccupancy: 3
     '400':
       $ref: '../../components/schemas/common/bad-request-response.yaml'
     '403':

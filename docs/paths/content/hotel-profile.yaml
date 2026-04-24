@@ -4,15 +4,32 @@ get:
   description: |
       This API retrieves detailed profile information for a specific hotel based on the provided hotel ID.
 
-      **Features:**  
-      - Fetches comprehensive hotel details.  
-      - Includes hotel policies, amenities, and other relevant information.  
+      **Features:**
+      - Fetches comprehensive hotel details.
+      - Includes hotel policies, amenities, and other relevant information.
       - Supports accessing complete hotel profiles for display or further processing.
 
       Designed to provide rich and detailed hotel content efficiently.
 
+      **Constraint:**
+      - Maximum stay duration: 28 nights
+      - Maximum age for children: 11 years (child ages must be 0–11 inclusive)
+      - Limit: 6 rooms per request
+      - Single room capacity: 1 to 8 adults
+
+      **Note:**
+      Use the locationVersion received in the response of Location-List for {"locationVersion":"*VERSION*"} in the Request.
+
   summary: Get Hotel Profile
   operationId: getHotelProfile
+  x-codeSamples:
+    - lang: 'Shell'
+      label: 'cURL'
+      source: |
+        curl --location 'https://api.cleartrip.com/hotels/api/v4/content/hotel-profile/122897' \
+        --header 'X-CT-API-KEY: *API_KEY*' \
+        --header 'x-meta-data: {"locationVersion":"*VERSION*"}' \
+        --header 'x-request-id: *REQUEST_ID*'
   parameters:
     - $ref: '../../components/schemas/parameters/x-api-key-header.yaml'
     - $ref: '../../components/schemas/parameters/x-tracking-id-header.yaml'
@@ -30,6 +47,868 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/content/response/hotel-profile-response.yaml'
+          example:
+            hotelId: "122897"
+            hotelContent:
+              name: " Featherlite Evoma Hotel"
+              description: "Evoma - Business Hotel, in K R Puram, Bangalore, is a 4-star business hotel which provides luxurious accommodation and excellent service to business travellers. The Hotel is located close to Whitefield Bangalore's IT Hub & Inustrial Areas like Hosakote, Narsapura, Vemgal & Malur ,offering a convenient location to those travelling to Bangalore on business.\n\nWe provide a choice of 65 luxurious and well-appointed rooms with numerous conveniences at your disposal. Our rooms are designed to ensure that your stay is meaningful and productive. We provide you with an atmosphere of comfort and relaxation. The rooms therefore have amenities such as in-room safe, free internet access, and audio and video conferencing."
+              property:
+                name: "Hotel"
+                code: "HOT"
+                type: "Hotel"
+              hotelLocation:
+                coordinates:
+                  latitude: 13.022585000000001
+                  longitude: 77.712135
+                pincode: "560049"
+                country:
+                  id: 694
+                  name: "India"
+                  code: "IN"
+                city:
+                  id: 32550
+                  name: "Bangalore"
+                state:
+                  id: 1137
+                  name: "Karnataka"
+                area:
+                  name: "#14 Bhattrahalli,  Old Madras Road,  560049 Bangalore,  India"
+                locality:
+                  id: 586247
+                  name: "Battarahalli"
+              media:
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/93613e67_z.jpg"
+                  type: "PHOTO"
+                  featured: true
+                  category: "Property Pictures"
+                  subCategory: "Hotel Exterior"
+                  caption: "Property entrance"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/93613e67_z_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_2b863d2b-0ac2-4e5d-a970-04cedae715c1_proc.jpeg"
+                  type: "PHOTO"
+                  featured: true
+                  category: "Property Pictures"
+                  subCategory: "Public Areas"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_2b863d2b-0ac2-4e5d-a970-04cedae715c1_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_650c12d9-75cf-4a3d-8a47-0894b2e81aac_proc.jpeg"
+                  type: "PHOTO"
+                  featured: true
+                  category: "Property Pictures"
+                  subCategory: "Public Areas"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_650c12d9-75cf-4a3d-8a47-0894b2e81aac_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_4a7f3de0-8edc-4577-bff8-845c3107fb10.jpeg"
+                  type: "PHOTO"
+                  featured: true
+                  category: "Amenities Pictures"
+                  subCategory: "Pool"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_4a7f3de0-8edc-4577-bff8-845c3107fb10_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/447373758_proc.jpg"
+                  type: "PHOTO"
+                  featured: true
+                  category: "Room Pictures"
+                  subCategory: "Deluxe Double or Twin Room"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/447373758_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_1ee1b9f5-96da-40d7-9e5f-d57c07e805f2.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Property Pictures"
+                  subCategory: "Hotel Exterior"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_1ee1b9f5-96da-40d7-9e5f-d57c07e805f2_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/485661395_proc.jpg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Property Pictures"
+                  subCategory: "Hotel Exterior"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/485661395_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_5daa4b8b-e8bf-4393-891a-17e04c6ab7b0_proc.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Property Pictures"
+                  subCategory: "Hotel Exterior"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_5daa4b8b-e8bf-4393-891a-17e04c6ab7b0_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/658e077fa022297baac7cfa43a98823d_proc.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Property Pictures"
+                  subCategory: "Hotel Exterior"
+                  caption: "Garden"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/658e077fa022297baac7cfa43a98823d_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/109325_14031119530018650142_proc.jpg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Property Pictures"
+                  subCategory: "Hotel Exterior"
+                  caption: "Exterior view"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/109325_14031119530018650142_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/109325_14031119530018650146.jpg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Room Pictures"
+                  subCategory: "Premium 2 Double Beds"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/109325_14031119530018650146_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_dd3d42e4-4fb4-4589-9ad4-9c2666dd6dff_proc.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Room Pictures"
+                  subCategory: "Premium Double Room"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_dd3d42e4-4fb4-4589-9ad4-9c2666dd6dff_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_2977060_original_proc.jpg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Amenities Pictures"
+                  subCategory: "Business Centre"
+                  caption: "Meeting Room"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_2977060_original_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_46393264-abb9-4b3f-86aa-add63a46dd71_proc.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Amenities Pictures"
+                  subCategory: "Food & Dining"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_46393264-abb9-4b3f-86aa-add63a46dd71_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/494730b6ccb77af0b0774c0212289a29_proc.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Amenities Pictures"
+                  subCategory: "Food & Dining"
+                  caption: "Restaurant"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/494730b6ccb77af0b0774c0212289a29_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/485661094_proc.jpg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Amenities Pictures"
+                  subCategory: "Pool"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/485661094_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/e0d46e17_z_proc.jpg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Amenities Pictures"
+                  subCategory: "Pool"
+                  caption: "Outdoor pool"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/e0d46e17_z_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_e7c8e92d-7af0-45de-899a-eb54ee14922c_proc.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Amenities Pictures"
+                  subCategory: "Recreation"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_e7c8e92d-7af0-45de-899a-eb54ee14922c_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_d755af83-ad92-418d-bd7b-2ceae23e80e7_proc.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Amenities Pictures"
+                  subCategory: "Fitness Centre"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_d755af83-ad92-418d-bd7b-2ceae23e80e7_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/4d67b476_z_proc.jpg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Amenities Pictures"
+                  subCategory: "Fitness Centre"
+                  caption: "Gym"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/4d67b476_z_tn.jpg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_4f47908e-0dc9-4fa3-a199-251096c1df75.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Property Pictures"
+                  subCategory: "Outdoors"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_4f47908e-0dc9-4fa3-a199-251096c1df75_tn.jpeg"
+                - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/d845d9b5e00a45363c3ddc12409624d2_proc.jpeg"
+                  type: "PHOTO"
+                  featured: false
+                  category: "Property Pictures"
+                  subCategory: "Hotel View"
+                  caption: "Exterior view"
+                  thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/d845d9b5e00a45363c3ddc12409624d2_tn.jpeg"
+                - "..."
+              amenities:
+                - name: "24-hour security"
+                  category: "General Amenities"
+                  standardAmenityName: "24-hour-security"
+                - name: "Air conditioning"
+                  category: "General Amenities"
+                  standardAmenityName: "air-conditioning"
+                - name: "Cctv"
+                  category: "General Amenities"
+                  standardAmenityName: "cctv"
+                - name: "Doctor on call"
+                  category: "General Amenities"
+                  standardAmenityName: "doctor-on-call"
+                - name: "Electronic keycard"
+                  category: "General Amenities"
+                  standardAmenityName: "electronic-keycard"
+                - name: "Elevator"
+                  category: "General Amenities"
+                  standardAmenityName: "elevator"
+                - name: "Fire safety"
+                  category: "General Amenities"
+                  standardAmenityName: "fire-safety"
+                - name: "Housekeeping"
+                  category: "General Amenities"
+                  standardAmenityName: "housekeeping"
+                - name: "Intercom"
+                  category: "General Amenities"
+                  standardAmenityName: "intercom"
+                - name: "Laundry service"
+                  category: "General Amenities"
+                  standardAmenityName: "laundry-service"
+                - name: "Locker room"
+                  category: "General Amenities"
+                  standardAmenityName: "locker-room"
+                - name: "Multilingual staff"
+                  category: "General Amenities"
+                  standardAmenityName: "multilingual-staff"
+                - name: "Newspaper"
+                  category: "General Amenities"
+                  standardAmenityName: "newspaper"
+                - name: "Power back up"
+                  category: "General Amenities"
+                  standardAmenityName: "power-back-up"
+                - name: "Refrigerator"
+                  category: "General Amenities"
+                  standardAmenityName: "refrigerator"
+                - name: "Sanitizer"
+                  category: "General Amenities"
+                  standardAmenityName: "sanitizer"
+                - name: "Smoke detector"
+                  category: "General Amenities"
+                  standardAmenityName: "smoke-detector"
+                - name: "Swimming pool"
+                  category: "General Amenities"
+                  standardAmenityName: "swimming-pool"
+                - name: "Umbrella"
+                  category: "General Amenities"
+                  standardAmenityName: "umbrella"
+                - name: "Bell staff/porter"
+                  category: "General Amenities"
+                  standardAmenityName: "bell-staff/porter"
+                - name: "Room service"
+                  category: "General Amenities"
+                  standardAmenityName: "room-service"
+                - name: "Wheelchair"
+                  category: "General Amenities"
+                  standardAmenityName: "wheelchair"
+                - name: "Parking"
+                  category: "General Amenities"
+                  standardAmenityName: "parking"
+                - name: "Common seating area"
+                  category: "General Amenities"
+                  standardAmenityName: "common-seating-area"
+                - name: "Lawn"
+                  category: "General Amenities"
+                  standardAmenityName: "lawn"
+                - name: "Public bathroom"
+                  category: "General Amenities"
+                  standardAmenityName: "public-bathroom"
+                - name: "Terrace"
+                  category: "General Amenities"
+                  standardAmenityName: "terrace"
+                - name: "Car rental desk"
+                  category: "General Amenities"
+                  standardAmenityName: "car-rental-desk"
+                - name: "Tour/sightseeing desk"
+                  category: "General Amenities"
+                  standardAmenityName: "tour/sightseeing-desk"
+                - name: "Game room"
+                  category: "Activities"
+                  standardAmenityName: "game-room"
+                - name: "Beach facing"
+                  category: "Activities"
+                  standardAmenityName: "beach-facing"
+                - name: "Bar"
+                  category: "Food & Beverages"
+                  standardAmenityName: "bar"
+                - name: "Restaurant"
+                  category: "Food & Beverages"
+                  standardAmenityName: "restaurant"
+                - name: "Lounge"
+                  category: "Food & Beverages"
+                  standardAmenityName: "lounge"
+                - name: "Airport shuttle service"
+                  category: "Services"
+                  standardAmenityName: "airport-shuttle-service"
+                - name: "Shuttle service"
+                  category: "Services"
+                  standardAmenityName: "shuttle-service"
+                - name: "Parcel service"
+                  category: "Services"
+                  standardAmenityName: "parcel-service"
+                - name: "Photocopying service"
+                  category: "Services"
+                  standardAmenityName: "photocopying-service"
+                - name: "Printing"
+                  category: "Services"
+                  standardAmenityName: "printing"
+                - name: "Banquet"
+                  category: "Business"
+                  standardAmenityName: "banquet"
+                - name: "Business center"
+                  category: "Business"
+                  standardAmenityName: "business-center"
+                - name: "Conference room"
+                  category: "Business"
+                  standardAmenityName: "conference-room"
+              policyInfo:
+                checkinTime: "1400"
+                checkoutTime: "1200"
+                guidelinesAndPolicies:
+                  - title: "Guest Profile"
+                    description:
+                      - "Guests below 18 years of age NOT allowed"
+                      - "Children allowed"
+                      - "Unmarried couples are allowed"
+                      - "Bachelors are allowed"
+                  - title: "Food & Beverages"
+                    description:
+                      - "Alcohol consumption allowed within the premises"
+                      - "Food from outside allowed within the premises"
+                      - "Non-Veg allowed within the premises"
+                      - "All government COVID-19 guidelines for Food Hygiene followed"
+                  - title: "Check-in Check-out Policy"
+                    description:
+                      - "Aadhar, Passport and Drivers License are acceptable ID Proofs"
+                      - "Certain hotels may have mandatory gala dinner charges for Christmas and New Year's Eve, which, if applicable, are payable directly at the property during check-in."
+                  - title: "Restrictions"
+                    description:
+                      - "Pets NOT allowed within the premises"
+                      - "Smoking allowed within the premises"
+                      - "Visitors NOT allowed within the premises"
+                      - "Private parties or events are NOT allowed at the property"
+                  - title: "Payment policy"
+                    description:
+                      - "Guests can pay by Debit/ Credit Card (VISA & Mastercard)"
+                  - title: "Safety & Security"
+                    description:
+                      - "Government aligned quarantine protocol being followed"
+                      - "Property staff understands all hygiene guidelines"
+                      - "All common areas are fully sanitized regularly"
+                      - "All rooms are fully sanitized between two stays"
+                      - "Guests who have fever are not allowed"
+                      - "Guests required to have Arogya Setu app"
+                  - title: "Others"
+                    description:
+                      - "Property is Elderly-friendly/Disabled-friendly"
+              slugId: "evoma-hotel-122897"
+              otherInfo:
+                numberOfFloors: 0
+                numberOfRooms: 0
+              contacts:
+                - contactTitle: "Hotel Admin"
+                  contactEmail: "rm@hospitalitynmore.com"
+                  contactMobileNo:
+                    - "+91-8041903000"
+                    - "+91-8041903000"
+                - contactTitle: "Owner"
+                  contactEmail: "rm@hospitalitynmore.com"
+                  contactMobileNo:
+                    - "+91-8041903000"
+                    - "+91-8041903000"
+                - contactTitle: "Communication"
+                  contactEmail: "rm@hospitalitynmore.com"
+                  contactMobileNo:
+                    - "+91-8041903000"
+                    - "+91-8041903000"
+              ratings:
+                starRating: 4
+            roomsContent:
+              rooms:
+                - id: 2593567
+                  name: "Deluxe Double or Twin Room"
+                  description: "Deluxe Double or Twin Room"
+                  views:
+                    - "City view"
+                  amenities:
+                    - name: "Air conditioning"
+                      category: "Top Facilities"
+                    - name: "Desk"
+                      category: "Top Facilities"
+                    - name: "Ironing facilities"
+                      category: "Top Facilities"
+                    - name: "Minibar"
+                      category: "Top Facilities"
+                    - name: "Private bathroom"
+                      category: "Bathroom"
+                    - name: "Slippers"
+                      category: "Bathroom"
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 150.0
+                    unit: "sq.ft"
+                  media:
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/447373758_proc.jpg"
+                      type: "PHOTO"
+                      featured: true
+                      category: "Room Pictures"
+                      subCategory: "Deluxe Double or Twin Room"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/447373758_tn.jpg"
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_ff795e31-e042-4a15-92aa-83cd2f126666_proc.jpeg"
+                      type: "PHOTO"
+                      featured: false
+                      category: "Room Pictures"
+                      subCategory: "Deluxe Double or Twin Room"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_ff795e31-e042-4a15-92aa-83cd2f126666_tn.jpeg"
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/447373794_proc.jpg"
+                      type: "PHOTO"
+                      featured: false
+                      category: "Room Pictures"
+                      subCategory: "Deluxe Double or Twin Room"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/447373794_tn.jpg"
+                    - "..."
+                  bedType: "Double Bed"
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 3
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 3
+                - id: 2593568
+                  name: "Premium Double Room"
+                  description: "Premium Double Room"
+                  views:
+                    - "City view"
+                  amenities:
+                    - name: "Air conditioning"
+                      category: "Top Facilities"
+                    - name: "Desk"
+                      category: "Top Facilities"
+                    - name: "Ironing facilities"
+                      category: "Top Facilities"
+                    - name: "Minibar"
+                      category: "Top Facilities"
+                    - name: "Slippers"
+                      category: "Bathroom"
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 160.0
+                    unit: "sq.ft"
+                  media:
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_dd3d42e4-4fb4-4589-9ad4-9c2666dd6dff_proc.jpeg"
+                      type: "PHOTO"
+                      featured: false
+                      category: "Room Pictures"
+                      subCategory: "Premium Double Room"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/image_122897_dd3d42e4-4fb4-4589-9ad4-9c2666dd6dff_tn.jpeg"
+                    - "..."
+                  bedType: "Double Bed"
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 3
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 3
+                - id: 1305825
+                  name: "Deluxe Room"
+                  amenities:
+                    - name: "TV"
+                      category: "Top Facilities"
+                    - name: "Ironing facilities"
+                      category: "Top Facilities"
+                    - name: "Soundproof"
+                      category: "Top Facilities"
+                    - name: "Air conditioning"
+                      category: "Top Facilities"
+                    - name: "Dining area"
+                      category: "Food and Drink"
+                    - name: "Blackout curtains"
+                      category: "Room Amenities"
+                    - name: "Minibar"
+                      category: "Top Facilities"
+                    - name: "Coffee machine"
+                      category: "Food and Drink"
+                    - name: "Kitchenette"
+                      category: "Food and Drink"
+                    - name: "Desk"
+                      category: "Top Facilities"
+                    - name: "Hairdryer"
+                      category: "Bathroom"
+                    - name: "Shower"
+                      category: "Top Facilities"
+                    - name: "Slippers"
+                      category: "Bathroom"
+                    - name: "Private bathroom"
+                      category: "Bathroom"
+                    - name: "Toiletries"
+                      category: "Top Facilities"
+                    - name: "Safe"
+                      category: "Top Facilities"
+                    - name: "Room service"
+                      category: "Top Facilities"
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 498.0
+                    unit: "sq.ft"
+                  media:
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/1e456b05_z.jpg"
+                      type: "PHOTO"
+                      featured: false
+                      category: "Room Pictures"
+                      subCategory: "Deluxe Room"
+                      caption: "Private kitchen"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/1e456b05_z_tn.jpg"
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 2
+                - id: 1305824
+                  name: "Premier Room"
+                  amenities:
+                    - name: "TV"
+                      category: "Top Facilities"
+                    - name: "Ironing facilities"
+                      category: "Top Facilities"
+                    - name: "Soundproof"
+                      category: "Top Facilities"
+                    - name: "Air conditioning"
+                      category: "Top Facilities"
+                    - name: "Blackout curtains"
+                      category: "Room Amenities"
+                    - name: "Minibar"
+                      category: "Top Facilities"
+                    - name: "Coffee machine"
+                      category: "Food and Drink"
+                    - name: "Kitchenette"
+                      category: "Food and Drink"
+                    - name: "Desk"
+                      category: "Top Facilities"
+                    - name: "Hairdryer"
+                      category: "Bathroom"
+                    - name: "Shower"
+                      category: "Top Facilities"
+                    - name: "Slippers"
+                      category: "Bathroom"
+                    - name: "Private bathroom"
+                      category: "Bathroom"
+                    - name: "Top floor"
+                      category: "Accessibility"
+                    - name: "Toiletries"
+                      category: "Top Facilities"
+                    - name: "Safe"
+                      category: "Top Facilities"
+                    - name: "Room service"
+                      category: "Top Facilities"
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 427.0
+                    unit: "sq.ft"
+                  media:
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/0a73e265_z.jpg"
+                      type: "PHOTO"
+                      featured: false
+                      category: "Room Pictures"
+                      subCategory: "Premier Room"
+                      caption: "Bathroom"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/0a73e265_z_tn.jpg"
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 2
+                - id: 3235238
+                  name: "Closed"
+                  description: "Closed"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - url: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/109325_14031119530018650146.jpg"
+                      type: "PHOTO"
+                      featured: false
+                      category: "Room Pictures"
+                      subCategory: "Closed"
+                      caption: "Guestroom"
+                      thumbNailImagePath: "https://rukmini-ct.flixcart.com/w_2048,f_auto,q_auto/ct-hotel-images/places/hotels/cms/1228/122897/images/109325_14031119530018650146_tn.jpg"
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 0
+                    maxAdultOccupancy: 0
+                - id: 2784748
+                  name: "Double Executive"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784759
+                  name: "Deluxe Room (No Window,Area:36)"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784758
+                  name: "Suite"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media: []
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784746
+                  name: "Room Assigned on Arrival"
+                  amenities:
+                    - name: "Hairdryer"
+                      category: "Bathroom"
+                    - name: "Private bathroom"
+                      category: "Bathroom"
+                    - name: "Air conditioning"
+                      category: "Top Facilities"
+                    - name: "Minibar"
+                      category: "Top Facilities"
+                    - name: "Desk"
+                      category: "Top Facilities"
+                    - "..."
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784756
+                  name: "Premier"
+                  amenities:
+                    - name: "Hairdryer"
+                      category: "Bathroom"
+                    - name: "Mirror"
+                      category: "Room Amenities"
+                    - name: "Private bathroom"
+                      category: "Bathroom"
+                    - name: "Air conditioning"
+                      category: "Top Facilities"
+                    - name: "Extra long beds (> 6.5 ft)"
+                      category: "Room Amenities"
+                    - "..."
+                  area:
+                    value: 496.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2870094
+                  name: "PREMIUM 1 SINGLE BED"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media: []
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784744
+                  name: "Deluxe Single Room"
+                  amenities:
+                    - name: "Hairdryer"
+                      category: "Bathroom"
+                    - name: "Air conditioning"
+                      category: "Top Facilities"
+                    - name: "Minibar"
+                      category: "Top Facilities"
+                    - "..."
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784766
+                  name: "Premier Room (No Window,Area:27)"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784754
+                  name: "Premier triple Room Adhoc"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 3
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784763
+                  name: "Premier Single Room"
+                  amenities:
+                    - name: "Hairdryer"
+                      category: "Bathroom"
+                    - name: "Air conditioning"
+                      category: "Top Facilities"
+                    - name: "Minibar"
+                      category: "Top Facilities"
+                    - "..."
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784762
+                  name: "Premium 2 Double Beds"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784750
+                  name: "Suite Deluxe"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784761
+                  name: "Guest Room (Master)"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 3
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784760
+                  name: "DELUXE SINGLE ROOM 1 SINGLE BED"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784765
+                  name: "Premium Room (No Window,Area:46)"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784764
+                  name: "Suite (no window)"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+                - id: 2784752
+                  name: "PREMIUM 2 BEDS 1 TWIN BED"
+                  amenities:
+                    - name: "Fridge"
+                      category: "Food and Drink"
+                  area:
+                    value: 0.0
+                    unit: "sq.ft"
+                  media:
+                    - "..."
+                  bedGroups: []
+                  maxOccupancy:
+                    totalMaxOccupancy: 2
+                    maxChildOccupancy: 1
+                    maxAdultOccupancy: 1
+
     '400':
       $ref: '../../components/schemas/common/bad-request-response.yaml'
     '403':
