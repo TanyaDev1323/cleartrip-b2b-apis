@@ -16,4 +16,14 @@ required:
   - hasNextPage
   - nextPageToken
   - hotels
+example:
+  hasNextPage: true
+  nextPageToken: "WyI0NTYyNjc4Il0="
+  hotels:
+    - hotelId: 122890
+    - hotelId: 122897
+    - hotelId: 1324732
+    - hotelId: 1324888
+    - hotelId: 1324906
+    - "..."
     

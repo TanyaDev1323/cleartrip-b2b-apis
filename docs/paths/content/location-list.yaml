@@ -16,8 +16,8 @@ get:
       label: 'cURL'
       source: |
         curl --location 'https://api.cleartrip.com/hotels/api/v4/content/locations?locationType=CITY&pageSize=1000&nextPageToken=0' \
-        --header 'X-CT-API-KEY: *yourAPIkey*' \
-        --header 'x-request-id: *YourRequestid*'
+        --header 'X-CT-API-KEY: *API_KEY*' \
+        --header 'x-request-id: *REQUEST_ID*'
   parameters:
     - $ref: '../../components/schemas/parameters/x-api-key-header.yaml'
     - $ref: '../../components/schemas/parameters/x-tracking-id-header.yaml'

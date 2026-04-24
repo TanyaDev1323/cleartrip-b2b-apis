@@ -15,6 +15,9 @@ get:
       - locationType (String): Currently accepts ["CITY"] and ["LOCALITY"]. We expect to expand the supported types in the future.
 
       **Note:**
+      Use the locationVersion received in the response of Location-List for {"locationVersion":"*VERSION*"} in the Request.
+
+      **Note:**
       If `hasNextPage` is `true` in the response, a `nextPageToken` will be included. Pass this token as the `nextPageToken` query parameter in your next request to retrieve subsequent pages.
       - For Testing in QA environment use the following Cities: Lucknow - 34849, Hyderabad - 33897, Bangalore : 32550
 
@@ -24,10 +27,10 @@ get:
     - lang: 'Shell'
       label: 'cURL'
       source: |
-        curl --location 'https://api.cleartrip.com/hotels/api/v4/content/location/hotels?locationType=CITY&locationId=34849&pageSize=2000' \
-        --header 'X-CT-API-KEY: *yourAPIkey*' \
-        --header 'x-request-id: *YourRequestid*' \
-        --header 'x-meta-data: {"locationVersion":"V2"}'
+        curl --location 'https://api.cleartrip.com/hotels/api/v4/content/location/hotels?locationType=CITY&locationId=32550&pageSize=2000' \
+        --header 'X-CT-API-KEY: *API_KEY*' \
+        --header 'x-request-id: *REQUEST_ID*' \
+        --header 'x-meta-data: {"locationVersion":"*VERSION*"}'
   parameters:
     - $ref: '../../components/schemas/parameters/x-api-key-header.yaml'
     - $ref: '../../components/schemas/parameters/x-tracking-id-header.yaml'
